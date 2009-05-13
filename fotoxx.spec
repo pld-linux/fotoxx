@@ -1,23 +1,32 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	5.4.1
-Release:	0.1
+Version:	6.7.3
+Release:	1
 License:	GPL v2
 Group:		Applications
-Source0:	http://kornelix.squarespace.com/storage/fotoxx/%{name}-%{version}.tar.gz
-# Source0-md5:	383b3bce8310fe5fba0b49a83467ddfd
+Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
+# Source0-md5:	867371a4b43ad5442de63e0d1e424457
 URL:		http://kornelix.squarespace.com/fotoxx
-#BuildRequires:	-
-#Requires:	-
+BuildRequires:	FreeImage-devel
+BuildRequires:	perl-Image-ExifTool
+BuildRequires:	ufraw
+BuildRequires:	xdg-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Fotoxx is a free open-source Linux program for improving image files made
-with a digital camera.
+Fotoxx is a free open-source Linux program for improving image files
+made with a digital camera.
+
+Appart from standard operations it allows to:
+  - generate thumbnails
+  - fix red-eyes
+  - fix perspective
+  - make panoramas and HDR images
 
 %description -l pl.UTF-8
-Fotoxxm to wolne oprogramowanie open-source umożliwiające manipulacje grafiką.
+Fotoxxm to wolne oprogramowanie open-source umożliwiające manipulacje
+grafiką.
 
 Oprócz standardowej obróbki zdjęć, umożliwia min.:
   - generowanie miniaturek
@@ -26,10 +35,10 @@ Oprócz standardowej obróbki zdjęć, umożliwia min.:
   - generowanie zdjęć HDR
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -43,5 +52,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/CHANGES doc/README doc/userguide-en.html
-#%attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) /usr/local/*
