@@ -1,12 +1,12 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	7.0
+Version:	7.3
 Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	db7dc3f4c1c3573dc23799d09d512850
+# Source0-md5:	cfa7e11d6b1d32f0d4728d4f443b0919
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
 BuildRequires:	perl-Image-ExifTool
@@ -38,12 +38,15 @@ Oprócz standardowej obróbki zdjęć, umożliwia min.:
 %setup -q
 
 %build
-%{__make}
+%{__make} \
+	CFLAGS="%{rpmcflags} -Wall -c `pkg-config --cflags gtk+-2.0`" \
+	PREFIX=%{_prefix}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
+	PREFIX=%{_prefix} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
@@ -51,5 +54,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/CHANGES doc/README doc/userguide-en.html
-%attr(755,root,root) /usr/local/*
+%doc doc/{CHANGES,README,fotoxx-6-notes,toolbar-en.jpeg,userguide-*.html}
+%attr(755,root,root) %{_bindir}/*
+%{_datadir}/%{name}
