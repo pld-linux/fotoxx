@@ -1,12 +1,12 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	8.3
+Version:	7.3
 Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	e5c7563306b904187765d7fa15727268
+# Source0-md5:	cfa7e11d6b1d32f0d4728d4f443b0919
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
 BuildRequires:	perl-Image-ExifTool
@@ -40,13 +40,13 @@ Oprócz standardowej obróbki zdjęć, umożliwia min.:
 %build
 %{__make} \
 	CFLAGS="%{rpmcflags} -Wall -c `pkg-config --cflags gtk+-2.0`" \
-	PREFIX=$RPM_BUILD_ROOT/%{_prefix}
+	PREFIX=%{_prefix}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	PREFIX=$RPM_BUILD_ROOT/%{_prefix} \
+	PREFIX=%{_prefix} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
