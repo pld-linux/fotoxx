@@ -40,13 +40,13 @@ Oprócz standardowej obróbki zdjęć, umożliwia min.:
 %build
 %{__make} \
 	CFLAGS="%{rpmcflags} -Wall -c `pkg-config --cflags gtk+-2.0`" \
-	PREFIX=%{_prefix}
+	PREFIX=$RPM_BUILD_ROOT/%{_prefix}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	PREFIX=%{_prefix} \
+	PREFIX=$RPM_BUILD_ROOT/%{_prefix} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
