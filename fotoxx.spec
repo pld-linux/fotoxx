@@ -1,12 +1,12 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	7.3
+Version:	8.3
 Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	cfa7e11d6b1d32f0d4728d4f443b0919
+# Source0-md5:	e5c7563306b904187765d7fa15727268
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
 BuildRequires:	perl-Image-ExifTool
