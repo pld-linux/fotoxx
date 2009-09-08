@@ -2,17 +2,19 @@ Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
 Version:	8.3
-Release:	1
-License:	GPL v2
+Release:	2
+License:	GPL v3
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-Patch0:		%{name}-Makefile.patch
 # Source0-md5:	e5c7563306b904187765d7fa15727268
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
 BuildRequires:	perl-Image-ExifTool
 BuildRequires:	ufraw
 BuildRequires:	xdg-utils
+Suggests:	perl-Image-ExifTool
+Suggests:	ufraw
+Suggests:	xdg-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,18 +39,21 @@ Oprócz standardowej obróbki zdjęć, umożliwia min.:
 
 %prep
 %setup -q
-%patch0
 
 %build
 %{__make} \
 	CFLAGS="%{rpmcflags} -Wall -c `pkg-config --cflags gtk+-2.0`" \
+	DOCDIR=%{_docdir}/%{name}-%{version} \
 	PREFIX=%{_prefix}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
 	PREFIX=%{_prefix} \
+	DOCDIR=%{_docdir}/%{name}-%{version} \
+	DESKTOP=$RPM_BUILD_ROOT%{_desktopdir}/kornelix-%{name}.desktop \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
@@ -56,7 +61,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/{CHANGES,README,toolbar-en.jpeg,userguide-*.html}
+%doc doc/{CHANGES,README,TRANSLATIONS,toolbar-en.jpeg,userguide-en.html}
+%lang(fr) %doc doc/userguide-fr.html
+%lang(gl) %doc doc/userguide-gl.html
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
-%{_mandir}/man1/*
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/icons
+%dir %{_datadir}/%{name}/locales
+%lang(cz) %{_datadir}/%{name}/locales/cz
+%lang(de) %{_datadir}/%{name}/locales/de
+%lang(el) %{_datadir}/%{name}/locales/el
+%lang(es) %{_datadir}/%{name}/locales/es
+%lang(fr) %{_datadir}/%{name}/locales/fr
+%lang(gl) %{_datadir}/%{name}/locales/gl
+%lang(zh_CN) %{_datadir}/%{name}/locales/zh_CN
+%{_desktopdir}/kornelix-%{name}.desktop
+%{_mandir}/man1/*.1.gz
