@@ -1,12 +1,12 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	8.4.2
+Version:	8.4.3
 Release:	1
 License:	GPL v3
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	cfbe49d10be132d0f1c4ac8982227232
+# Source0-md5:	cb86c4d663a60c0e84e8d6dda599001f
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
 BuildRequires:	perl-Image-ExifTool
@@ -74,6 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %{_datadir}/%{name}/locales/es
 %lang(fr) %{_datadir}/%{name}/locales/fr
 %lang(gl) %{_datadir}/%{name}/locales/gl
+%lang(it) %{_datadir}/%{name}/locales/it
 %lang(zh_CN) %{_datadir}/%{name}/locales/zh_CN
 %{_desktopdir}/kornelix-%{name}.desktop
 %{_mandir}/man1/*.1.gz
