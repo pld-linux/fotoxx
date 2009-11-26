@@ -7,9 +7,12 @@ License:	GPL v3
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
 # Source0-md5:	9d288ad184a0d9ef7207658c6e586de4
+Patch0:		%{name}-Makefile.patch
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
+BuildRequires:	gtk+2-devel
 BuildRequires:	perl-Image-ExifTool
+BuildRequires:	pkgconfig
 BuildRequires:	ufraw
 BuildRequires:	xdg-utils
 Suggests:	perl-Image-ExifTool
@@ -39,10 +42,13 @@ Oprócz standardowej obróbki zdjęć, umożliwia min.:
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} \
-	CFLAGS="%{rpmcflags} -Wall -c `pkg-config --cflags gtk+-2.0`" \
+	CXX="%{__cxx}" \
+	OPTCFLAGS="%{rpmcflags}" \
+	OPTLDFLAGS="%{rpmldflags}" \
 	DOCDIR=%{_docdir}/%{name}-%{version} \
 	PREFIX=%{_prefix}
 
@@ -77,4 +83,4 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_datadir}/%{name}/locales/it
 %lang(zh_CN) %{_datadir}/%{name}/locales/zh_CN
 %{_desktopdir}/kornelix-%{name}.desktop
-%{_mandir}/man1/*.1.gz
+%{_mandir}/man1/*.1*
