@@ -1,0 +1,33 @@
+--- fotoxx-8.7/Makefile.orig	2009-11-24 20:37:25.000000000 +0100
++++ fotoxx-8.7/Makefile	2009-11-26 15:12:11.000000000 +0100
+@@ -5,8 +5,10 @@
+ SOURCE = $(PROGRAM)-$(VERSION).cpp
+ 
+ # replace CFLAGS and LFLAGS -O (Oh) with -g for GDB debugging
+-CFLAGS = -O -Wall -c `pkg-config --cflags gtk+-2.0`
+-LFLAGS = -O -Wall -rdynamic `pkg-config --libs gtk+-2.0 gthread-2.0`
++CFLAGS := $(OPTCFLAGS) -Wall $(shell pkg-config --cflags gtk+-2.0)
++LDFLAGS := $(OPTLDFLAGS) -rdynamic
++LIBS := $(OPTLIBS) $(shell pkg-config --libs gtk+-2.0 gthread-2.0) -lfreeimage
++CXX = g++
+ 
+ # use $PREFIX if defined, else assume /usr/local
+ ifeq "$(PREFIX)" ""
+@@ -21,14 +23,14 @@
+ 
+ $(PROGRAM): $(PROGRAM).o zfuncs.o
+ 	@ ./dependencies.sh
+-	@ g++ $(LFLAGS) -lfreeimage -o $(PROGRAM) $(PROGRAM).o zfuncs.o
++	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ $(PROGRAM).o: $(SOURCE)
+-	@ g++ $(CFLAGS) -o $(PROGRAM).o $(SOURCE)		\
++	$(CXX) $(CFLAGS) -c -o $@ $^ \
+ 	  -D "DATADIR=\"$(DATADIR)\"" -D "DOCDIR=\"$(DOCDIR)\""
+ 
+ zfuncs.o: zfuncs.cpp
+-	@ g++ $(CFLAGS) zfuncs.cpp	\
++	$(CXX) $(CFLAGS) -c -o $@ $^ \
+ 	  -D "DATADIR=\"$(DATADIR)\"" -D "DOCDIR=\"$(DOCDIR)\"" -D "BINDIR=\"$(BINDIR)\""
+ 
+ install: $(PROGRAM)
