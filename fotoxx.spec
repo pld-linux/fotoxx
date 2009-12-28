@@ -1,12 +1,12 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	9.0
+Version:	9.1
 Release:	1
 License:	GPL v3
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	eb432137d0e846b55fc3d90c63111142
+# Source0-md5:	4991f10fcdf3bc1b451673d533b3d2ff
 Patch0:		%{name}-Makefile.patch
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
