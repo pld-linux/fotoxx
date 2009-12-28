@@ -3,9 +3,9 @@
 @@ -5,8 +5,10 @@
  SOURCE = $(PROGRAM)-$(VERSION).cpp
  
- # replace CFLAGS and LFLAGS -O (Oh) with -g for GDB debugging
--CFLAGS = -O -Wall -c `pkg-config --cflags gtk+-2.0`
--LFLAGS = -O -Wall -rdynamic `pkg-config --libs gtk+-2.0 gthread-2.0`
+ # replace CFLAGS and LFLAGS -O3 with -g for GDB debugging
+-CFLAGS = -O3 -Wall -c `pkg-config --cflags gtk+-2.0`
+-LFLAGS = -O3 -Wall -rdynamic `pkg-config --libs gtk+-2.0 gthread-2.0`
 +CFLAGS := $(OPTCFLAGS) -Wall $(shell pkg-config --cflags gtk+-2.0)
 +LDFLAGS := $(OPTLDFLAGS) -rdynamic
 +LIBS := $(OPTLIBS) $(shell pkg-config --libs gtk+-2.0 gthread-2.0) -lfreeimage
