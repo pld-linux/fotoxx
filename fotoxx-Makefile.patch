@@ -5,7 +5,7 @@
  
  # replace CFLAGS and LFLAGS -O3 with -g for GDB debugging
 -CFLAGS = -O3 -Wall -c `pkg-config --cflags gtk+-2.0`
--LFLAGS = -O3 -Wall -rdynamic `pkg-config --libs gtk+-2.0 gthread-2.0`
+-LFLAGS = -O3 -Wall -rdynamic `pkg-config --libs gtk+-2.0`
 +CFLAGS := $(OPTCFLAGS) -Wall $(shell pkg-config --cflags gtk+-2.0)
 +LDFLAGS := $(OPTLDFLAGS) -rdynamic
 +LIBS := $(OPTLIBS) $(shell pkg-config --libs gtk+-2.0 gthread-2.0) -lfreeimage
@@ -15,7 +15,7 @@
  ifeq "$(PREFIX)" ""
 @@ -21,14 +23,14 @@
  
- $(PROGRAM): $(PROGRAM).o zfuncs.o
+ $(PROGRAM): $(PROGRAM).o zfuncs.O
  	@ ./dependencies.sh
 -	@ g++ $(LFLAGS) -lfreeimage -o $(PROGRAM) $(PROGRAM).o zfuncs.o
 +	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
