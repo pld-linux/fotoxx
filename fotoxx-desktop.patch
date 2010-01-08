@@ -1,0 +1,14 @@
+--- fotoxx-9.2/data/desktop.orig	2010-01-08 14:11:20.000000000 +0100
++++ fotoxx-9.2/data/desktop	2010-01-01 17:04:42.000000000 +0100
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=fotoxx
+-Categories=Graphics
++Categories=Graphics;
+ Type=Application
+ Terminal=false
+-Exec=/usr/local/bin/fotoxx
+-Icon=/usr/local/share/fotoxx/icons/fotoxx.png
++Exec=/usr/bin/fotoxx
++Icon=/usr/share/fotoxx/icons/fotoxx.png
+ GenericName=Digital Photo Editor
