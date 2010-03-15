@@ -1,12 +1,12 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	9.6
+Version:	9.7
 Release:	1
 License:	GPL v3
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	680efd2f67fdc441e5d913072bb7a4f4
+# Source0-md5:	07d07a75e899065f5daa8aad082d4dec
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://kornelix.squarespace.com/fotoxx
@@ -81,9 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/icons
 %dir %{_datadir}/%{name}/locales
-%lang(cz) %{_datadir}/%{name}/locales/cz
 %lang(de) %{_datadir}/%{name}/locales/de
-%lang(el) %{_datadir}/%{name}/locales/el
 %lang(es) %{_datadir}/%{name}/locales/es
 %lang(fr) %{_datadir}/%{name}/locales/fr
 %lang(gl) %{_datadir}/%{name}/locales/gl
