@@ -19,6 +19,7 @@ BuildRequires:	xdg-utils
 Suggests:	perl-Image-ExifTool
 Suggests:	ufraw
 Suggests:	xdg-utils
+Obsoletes:	fotox
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
