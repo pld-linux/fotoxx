@@ -12,6 +12,7 @@ Patch1:		%{name}-desktop.patch
 URL:		http://kornelix.squarespace.com/fotoxx
 BuildRequires:	FreeImage-devel
 BuildRequires:	gtk+2-devel
+BuildRequires:	libstdc++-devel
 BuildRequires:	perl-Image-ExifTool
 BuildRequires:	pkgconfig
 BuildRequires:	ufraw
