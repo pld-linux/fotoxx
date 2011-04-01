@@ -1,12 +1,12 @@
 Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
-Version:	9.7
+Version:	11.04
 Release:	1
 License:	GPL v3
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	07d07a75e899065f5daa8aad082d4dec
+# Source0-md5:	535f78b5000ee117b2c91c1bee94145e
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://kornelix.squarespace.com/fotoxx
@@ -45,8 +45,8 @@ Oprócz standardowej obróbki zdjęć, umożliwia min.:
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+#%patch0 -p1
+#%patch1 -p1
 
 %build
 %{__make} \
@@ -76,9 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/{CHANGES,README,TRANSLATIONS,userguide-en.html}
-%lang(es) %doc doc/userguide-es.html
-%lang(fr) %doc doc/userguide-fr.html
-%lang(gl) %doc doc/userguide-gl.html
+#%lang(es) %doc doc/userguide-es.html
+#%lang(fr) %doc doc/userguide-fr.html
+#%lang(gl) %doc doc/userguide-gl.html
 %attr(755,root,root) %{_bindir}/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/icons
