@@ -2,7 +2,7 @@ Summary:	Image procesor
 Summary(pl.UTF-8):	Procesor grafiki
 Name:		fotoxx
 Version:	11.04
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Applications
 Source0:	http://kornelix.squarespace.com/storage/downloads/%{name}-%{version}.tar.gz
